@@ -17,7 +17,7 @@ async function carregarFilmes() {
         }
         const dados = await response.json();
         filmes = dados.results || [];
-        
+        console.log(filmes)
         exibirFilmes();
 
         
@@ -108,6 +108,7 @@ campoPesquisa.addEventListener("input", async () => {
         const dados = await response.json();
 
         filmes = dados.results || [];
+        console.log(filmes)
 
         exibirFilmes();
 
