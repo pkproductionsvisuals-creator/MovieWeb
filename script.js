@@ -6,7 +6,6 @@ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}
 let filmes = [];
 const movies = document.getElementById("movies");
 const campoPesquisa = document.getElementById("search");
-const filtroData = document.getElementById("filtroData"); // Elemento select do filtro
 
 async function carregarFilmes() {
     try {
@@ -87,20 +86,7 @@ function classificacao(votos){
         return "#e74c3c"; //red
 }
 
-// Evento para Filtrar/Ordenar por Data de Publicação
-filtroData.addEventListener("change", () => {
-    const criterio = filtroData.value;
 
-    if (criterio === "recente") {
-        // Ordena do mais recente para o mais antigo
-        filmes.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
-    } else if (criterio === "antigo") {
-        // Ordena do mais antigo para o mais recente
-        filmes.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
-    }
-
-    exibirFilmes();
-});
 
 campoPesquisa.addEventListener("input", async () => {
     const termoPesquisa = campoPesquisa.value.trim();
