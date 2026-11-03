@@ -1,5 +1,5 @@
 const API_KEY = 'c91bb0623cd0722ac307ea9d28424880';
-const API_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=10`;
+const API_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=1`;
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
 
@@ -61,10 +61,6 @@ function exibirFilmes() {
                 >
                     ${filme.vote_average.toFixed(1)}
                 </span>
-            </div>
-
-            <div class="release-date">
-                <small>Lançamento: ${dataLancamento}</small>
             </div>
 
             <div class="overview">
