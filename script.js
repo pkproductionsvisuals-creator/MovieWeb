@@ -7,7 +7,7 @@ let filmes = [];
 const movies = document.getElementById("movies")
 const campoPesquisa = document.getElementById("search")
 
-async function carregarFilmes() {
+export async function carregarFilmes() {
 
     try {
 
@@ -29,7 +29,7 @@ async function carregarFilmes() {
 }
 
 
-function exibirFilmes() {
+export function exibirFilmes() {
  
     movies.innerHTML = ""; 
 
