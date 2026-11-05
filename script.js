@@ -10,7 +10,7 @@ const campoPesquisa = document.getElementById("search");
 async function carregarFilmes() {
     try {
         const response = await fetch(API_URL);
-        if (!response.ok){
+        if (!response.ok) {
             throw new Error("Erro ao obter os filmes da API");
         }
         const dados = await response.json();
@@ -24,33 +24,32 @@ async function carregarFilmes() {
 }
 
 function exibirFilmes() {
-    movies.innerHTML = ""; 
+    movies.innerHTML = "";
 
     if (filmes.length === 0) {
         movies.innerHTML = "<p>Sem filmes no momento</p>";
         return;
-    } 
+    }
 
     filmes.forEach(filme => {
         const movie = document.createElement("div");
         movie.classList.add("movie");
 
         const imagem = filme.poster_path
-        ? `${IMG_PATH}${filme.poster_path}`
-        : "";
+            ? `${IMG_PATH}${filme.poster_path}`
+            : "";
 
         // Formatar a data de lançamento (ex: 1960-02-05 para 05/02/1960 ou apenas o ano)
-        const dataLancamento = filme.release_date 
-            ? filme.release_date.split('-').reverse().join('/') 
+        const dataLancamento = filme.release_date
+            ? filme.release_date.split('-').reverse().join('/')
             : "Data indisponível";
 
         movie.innerHTML = `
             <div class="imag">
-                ${
-                    imagem
-                        ? `<img src="${imagem}" alt="${filme.title}">`
-                        : `<p>Imagem indisponível</p>`
-                }
+                ${imagem
+                ? `<img src="${imagem}" alt="${filme.title}">`
+                : `<p>Imagem indisponível</p>`
+            }
             </div>
 
             <div class="text">
@@ -68,15 +67,15 @@ function exibirFilmes() {
                 <p>${filme.overview || "Sinopse indisponivel."}</p>
             </div>
         `;
-        
+
         movies.appendChild(movie);
     });
 }
 
-function classificacao(votos){
-    if(votos >= 8.5)
+function classificacao(votos) {
+    if (votos >= 8.5)
         return '#2ecc71'; //green
-    else if(votos >= 5 && votos < 8.5)
+    else if (votos >= 5 && votos < 8.5)
         return '#f1c40f'; //yellow
     else
         return "#e74c3c"; //red
@@ -113,3 +112,22 @@ campoPesquisa.addEventListener("input", async () => {
 });
 
 carregarFilmes();
+
+
+const item1 = document.getElementById("item1");
+const item2 = document.getElementById("item2");
+const item3 = document.getElementById("item3");
+
+const REPO_URL = "https://github.com/pkproductionsvisuals-creator/MovieWeb";
+
+item1.addEventListener("click", () => {
+    window.location.href = REPO_URL;
+});
+
+item2.addEventListener("click", () => {
+    window.location.href = REPO_URL;
+});
+
+item3.addEventListener("click", () => {
+    window.location.href = REPO_URL;
+});
