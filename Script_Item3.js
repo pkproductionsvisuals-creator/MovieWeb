@@ -174,6 +174,28 @@ campoPesquisa.addEventListener("input", async () => {
     }
 });
 
+//MENU
+const menuToggle = document.getElementById("menu-toggle");
+const menuIcon = document.getElementById("menu-icon");
+// Abrir e fechar o menu
+menuToggle.addEventListener("click", () => {
+    // Alternar a classe responsável pela animação
+    document.body.classList.toggle("menu-open");
+    // Verificar se o menu está aberto
+    const menuAberto = document.body.classList.contains("menu-open");
+    // Alterar o ícone do botão
+    if (menuAberto) {
+        menuIcon.textContent = "×";
+        menuToggle.setAttribute("aria-label", "Fechar menu");
+        menuToggle.setAttribute("aria-expanded", "true");
+    } else {
+        menuIcon.textContent = "☰";
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+        menuToggle.setAttribute("aria-expanded", "false");
+    }
+});
+
+
 homeButton.addEventListener("click", () => {    
     window.location.href = "index.html";
 });
