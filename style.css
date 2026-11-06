@@ -8,11 +8,101 @@ body{
     background-color: #000b2e;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
-/*Header*/
+.menu-circle {
+    position: fixed;
+    top: -60px;
+    left: -60px;
+    width: 120px;
+    height: 120px;
+    background-color: #ff686b;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+#menu-toggle {
+    position: absolute;
+    top: 70px;
+    left: 70px;
+    width: 35px;
+    height: 35px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-container {
+    min-height: 100vh;
+    transform-origin: top left;
+    transition: transform 0.6s ease-in-out;
+    background-color: #000b2e;
+    position: relative;
+    z-index: 1;
+}
+
+/*Quando Menu estiver aberto*/
+body.menu-open .page-container {
+    transform: rotate(-15deg) ;
+}
+
+
+.side-menu {
+    position: fixed;
+    left: 20px;
+    bottom: 50px;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+/* Botoes individuais */
+.nav-item {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    /* Escondido pro padrao */
+    opacity: 0;
+    transform: translateX(-100px);
+
+    /* Animação de entrada e saída */
+    transition: transform 0.6s ease, opacity 0.6s ease;
+
+    /* Cada item tem um atraso diferente */
+    transition-delay: 0ms;
+}
+
+/* Icones dos botoes */
+.nav-item span {
+    font-size: 17px;
+}
+
+
+/*Quando Menu estiver aberto*/
+body.menu-open .nav-item {
+    opacity: 1;
+    transform: translateX(0);
+    /* Atraso individual de 1ms */
+    transition-delay: calc(var(--i) * 1ms);
+}
+
+
 header{
-    
     position: fixed;
     width: 100vw;
     height: 50px;
@@ -20,26 +110,21 @@ header{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
-
     padding: 10px 50px;
     opacity: 0.9;
+    z-index: 10;
 }
 
 /*Campo de pesquisa*/
 #search{
     width: 200px;
     height: 30px;
-
     padding: 4px 10px;
-
     background-color: #000b2e;
     color: white;
-
     border: 1px solid #152857;
     border-radius: 15px;
     outline: none;
-
     font-size: 9px;
 }
 
@@ -53,9 +138,8 @@ main{
 
 #movies{
     display: grid;
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 15px;
-
     padding-top: 60px;
 
 }
@@ -65,11 +149,13 @@ main{
     min-width: 0;
     background-color: #061746;
     overflow: hidden;
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
     position: relative;
-    
+}
+
+.movie:hover{
+    transform: scale(1.03);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 .overview{
@@ -81,14 +167,18 @@ main{
     background-color: #000;
     color: #fff;
     padding: 1rem;
+    padding-top: 50%;
     overflow-y: auto;
     box-sizing: border-box;
-
+    opacity: 0;
     /*Escondido por padrao*/
     transform: translateY(100%);
-    transition: transform 0.3s ease-in;
-    opacity: 0;
-    padding-top: 50%;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.movie:hover .overview{
+    transform: translateY(0);
+    opacity: 0.8;
 }
 
 .overview h3{
@@ -100,13 +190,7 @@ main{
     line-height: 1.4;
 }
 
-.movie:hover .overview{
-    transform: translateY(0);
-    transform: scale(1.08);
-    opacity: 0.8;
 
-
-}
 
 .imag{
     width: 100%;
