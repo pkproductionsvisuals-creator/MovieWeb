@@ -30,6 +30,12 @@ let filmes = [];
 const movies = document.getElementById("movies");
 const campoPesquisa = document.getElementById("search");
 
+const homeButton = document.getElementById("home");
+const linguasButton = document.getElementById("Linguas");
+const dataButton = document.getElementById("Data");
+const generoButton = document.getElementById("genero");
+const contatosButton = document.getElementById("contatos");
+
 async function carregarFilmes() {
     try {
         const response = await fetch(API_URL);
@@ -166,6 +172,26 @@ campoPesquisa.addEventListener("input", async () => {
         console.error("Erro ao pesquisar filmes:", erro);
         movies.innerHTML = "<p>Erro ao pesquisar filmes.</p>";
     }
+});
+
+homeButton.addEventListener("click", () => {    
+    window.location.href = "index.html";
+});
+
+linguasButton.addEventListener("click", () => {
+    window.location.href = "Item1.html";
+});
+
+dataButton.addEventListener("click", () => {
+    window.location.href = "Item2.html";
+});
+
+generoButton.addEventListener("click", () => {
+    window.location.href = "Item3.html";
+});
+
+contatosButton.addEventListener("click", () => {
+    window.location.href = "contato.html";
 });
 
 carregarFilmes();
