@@ -7,6 +7,12 @@ let filmes = [];
 const movies = document.getElementById("movies");
 const campoPesquisa = document.getElementById("search");
 
+const homeButton = document.getElementById("home");
+const linguasButton = document.getElementById("Linguas");
+const dataButton = document.getElementById("Data");
+const generoButton = document.getElementById("genero");
+const contatosButton = document.getElementById("contatos");
+
 async function carregarFilmes() {
     try {
         const response = await fetch(API_URL);
@@ -149,6 +155,48 @@ campoPesquisa.addEventListener("input", async () => {
         console.error("Erro ao pesquisar filmes:", erro);
         movies.innerHTML = "<p>Erro ao pesquisar filmes.</p>";
     }
+});
+
+//MENU
+const menuToggle = document.getElementById("menu-toggle");
+const menuIcon = document.getElementById("menu-icon");
+// Abrir e fechar o menu
+menuToggle.addEventListener("click", () => {
+    // Alternar a classe responsável pela animação
+    document.body.classList.toggle("menu-open");
+    // Verificar se o menu está aberto
+    const menuAberto = document.body.classList.contains("menu-open");
+    // Alterar o ícone do botão
+    if (menuAberto) {
+        menuIcon.textContent = "×";
+        menuToggle.setAttribute("aria-label", "Fechar menu");
+        menuToggle.setAttribute("aria-expanded", "true");
+    } else {
+        menuIcon.textContent = "☰";
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+        menuToggle.setAttribute("aria-expanded", "false");
+    }
+});
+
+
+homeButton.addEventListener("click", () => {
+    window.location.href = "index.html";
+});
+
+linguasButton.addEventListener("click", () => {
+    window.location.href = "Item1.html";
+});
+
+dataButton.addEventListener("click", () => {
+    window.location.href = "Item2.html";
+});
+
+generoButton.addEventListener("click", () => {
+    window.location.href = "Item3.html";
+});
+
+contatosButton.addEventListener("click", () => {
+    window.location.href = "contato.html";
 });
 
 carregarFilmes();

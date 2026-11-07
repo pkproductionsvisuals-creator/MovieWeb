@@ -1,24 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MovieWeb</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
-    <header>
-        <input type="search" id="search" placeholder="Search">
-    </header>
 
-    <!--List of Movies-->
-    <main>
-        <div id="movies"></div>
-    </main>
-        
+<body>
+
+    <!--MENU CIRCULO-->
+    <div class="menu-circle">
+        <button id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span id="menu-icon">☰</span>
+        </button>
+    </div>
+
+    <!-- MENU LATERAL -->
+    <nav class="side-menu">
+
+        <button class="nav-item" style="--i: 1" id="home">
+            <span>⌂</span> Home
+        </button>
+
+        <button class="nav-item" style="--i: 2" id="Linguas">
+            <span>★</span> Linguas
+        </button>
+
+        <button class="nav-item" style="--i: 2" id="Data">
+            <span>★</span> Data
+        </button>
+
+        <button class="nav-item" style="--i: 2" id="genero">
+            <span>★</span> Genero
+        </button>
+
+        <button class="nav-item" style="--i: 3" id="contatos">
+            <span>✉</span> Contatos
+        </button>
+
+
+    </nav>
+
+
+    <!-- CONTEÚDO -->
+    <div class="page-container" id="page-container">
+        <header>
+            <input type="search" id="search" placeholder="Pesquisar filmes...">
+        </header>
+
+        <!-- Lista de filmes -->
+        <main>
+            <div id="movies"></div>
+        </main>
+
+    </div>
+
 
     <script src="Script_Item1.js"></script>
 
 </body>
+
 </html>
